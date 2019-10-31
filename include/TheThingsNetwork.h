@@ -73,6 +73,13 @@ public:
     void reset();
 
     /**
+     * @brief Set enable/disable the ADR mode
+     * 
+     * Set ADR mode (if it is a mobile node then turn off)
+     */
+    void setAdrMode(bool enable);
+
+    /**
      * @brief Configures the pins used to communicate with the LoRaWAN radio chip.
      * 
      * 

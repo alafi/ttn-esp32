@@ -31,6 +31,7 @@
 //! \file
 #define LMIC_DR_LEGACY 0
 #include "lmic_bandplan.h"
+//#include "esp_log.h"
 
 #if defined(DISABLE_BEACONS) && !defined(DISABLE_PING)
 #error Ping needs beacon tracking
@@ -1887,6 +1888,7 @@ static bit_t buildDataFrame (void) {
     }
 
     LMIC.frame[OFF_DAT_HDR] = HDR_FTYPE_DAUP | HDR_MAJOR_V1;
+    //ESP_LOGE("ADR", "%d, %d, %d, %d", LMIC.dnConf, LMIC.adrEnabled, sendAdrAckReq(), (end-OFF_DAT_OPTS));
     LMIC.frame[OFF_DAT_FCT] = (LMIC.dnConf | LMIC.adrEnabled
                               | (sendAdrAckReq() ? FCT_ADRACKReq : 0)
                               | (end-OFF_DAT_OPTS));

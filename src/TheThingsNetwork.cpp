@@ -118,6 +118,11 @@ void TheThingsNetwork::reset()
     ttn_hal.leaveCriticalSection();
 }
 
+void TheThingsNetwork::setAdrMode(bool enable)
+{
+    LMIC_setAdrMode(enable?1:0);
+}
+
 bool TheThingsNetwork::provision(const char *devEui, const char *appEui, const char *appKey)
 {
     if (!provisioning.decodeKeys(devEui, appEui, appKey))

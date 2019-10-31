@@ -29,6 +29,7 @@
 #define LMIC_DR_LEGACY 0
 
 #include "lmic_bandplan.h"
+//#include "esp_log.h"
 
 #if defined(CFG_eu868)
 // ================================================================================
@@ -222,6 +223,7 @@ ostime_t LMICeu868_nextTx(ostime_t now) {
                                 (LMIC.channelDrMap[chnl] & (1 << (LMIC.datarate & 0xF))) != 0 &&
                                 band == (LMIC.channelFreq[chnl] & 0x3)) { // in selected band
                                 LMIC.txChnl = LMIC.bands[band].lastchnl = chnl;
+                                //ESP_LOGD("c", "1 mintime: %d, (mintime-now):%d", mintime, mintime-now);
                                 return mintime;
                         }
                 }
